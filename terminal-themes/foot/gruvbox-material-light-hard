@@ -1,0 +1,23 @@
+# -*- conf -*-
+# Adaptation of https://codeberg.org/dnkl/foot/src/branch/master/themes/gruvbox
+# with colors from https://gist.github.com/sainnhe/ad5cbc4f05c4ced83f80e54d9a75d22f
+
+[colors]
+background=f9f5d7
+foreground=654735
+regular0=654735
+regular1=c14a4a
+regular2=6c782e
+regular3=b47109
+regular4=45707a
+regular5=945e80
+regular6=4c7a5d
+regular7=f2e5bc
+bright0=654735
+bright1=c14a4a
+bright2=6c782e
+bright3=b47109
+bright4=45707a
+bright5=945e80
+bright6=4c7a5d
+bright7=f2e5bc
