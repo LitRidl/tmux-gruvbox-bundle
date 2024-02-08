@@ -1,9 +1,8 @@
 #!/usr/bin/env bash
-# PLUGIN_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-# PLUGIN_DIR="$HOME/.config/plugins/tmux-gruvbox-bundle"
-PLUGIN_DIR="$HOME/projects/tmux-gruvbox-bundle"
 
-DEFAULT_COLOR_THEME="gruvbox-original-dark"
+PLUGIN_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+DEFAULT_COLOR_THEME="gruvbox-original-dark-hard"
 DEFAULT_STATUSLINE_THEME="powerline-minimal"
 DEFAULT_DATETIME_FORMAT="%x  %R"
 
@@ -36,20 +35,21 @@ main() {
   fi
 
   local transparency="$(get_or_default "@gruvbox-transparent-background" "off")"
-  local status_bg_color=$thm_bg
+  local status_bg_color="$thm_bg"
   if [[ "$transparency" == "on" ]]; then
     status_bg_color="terminal"
+    thm_bg_as_fg="$(get_or_default "@gruvbox-explicit-background-color" "terminal")"
   fi
 
-  local user_bg_color="$(get_or_default "@gruvbox-explicit-background-color" "none")"
-  local bg_as_fg_color=$thm_bg
-  if [[ "$user_bg_color" != "none" ]]; then
-    bg_as_fg_color="$user_bg_color"
-  fi
+  # local user_bg_as_fg_color="$(get_or_default "@gruvbox-explicit-background-color" "terminal")"
+  # fix for some scenarios: thm_bg_as_fg=$status_bg_color
+  # if [[ "$user_bg_as_fg_color" != "none" ]]; then
+  #   # Overriding thm_bg_as_fg=thm_bg set in the theme file
+  #   thm_bg_as_fg="$user_bg_as_fg_color"
+  # fi
 
   # Default statusbar colors
-  set status-bg "$status_bg_color"
-  set status-fg "$thm_fg"
+  set status-style bg=$thm_bg_as_fg,fg=$thm_fg
   set status-justify "left"
   set status-left-style none
   set status-left-length "100"
@@ -72,12 +72,12 @@ main() {
 
   # Copy mode
   setw copy-mode-match-style bg=$thm_copy_mode_match_bg,fg=$thm_copy_mode_match_fg
-  setw copy-mode-current-match-style "bg=$thm_copy_mode_current_match_bg fg=$thm_copy_mode_current_match_fg bold"
+  setw copy-mode-current-match-style bg=$thm_copy_mode_current_match_bg,fg=$thm_copy_mode_current_match_fg,bold
   setw copy-mode-mark-style bg=$thm_copy_mode_mark_bg,fg=$thm_copy_mode_mark_fg
 
   # Command line (Prefix + :) and text when in vi command mode (enabled by "set -g status-keys vi")
   # Prefix + : to open command prompt and then ESC to open command prompt command mode
-  setw mode-style "bg=$thm_cmd_bg fg=$thm_cmd_fg bold"
+  setw mode-style bg=$thm_cmd_bg,fg=$thm_cmd_fg,bold
 
   # Default window title colors
   setw window-status-style bg=$thm_tab_bg,fg=$thm_tab_fg
@@ -97,7 +97,7 @@ main() {
   setw popup-border-style fg=$thm_popup_border_fg
 
   # Clock mode
-  setw clock-mode-colour $thm_clock_mode
+  setw clock-mode-colour "$thm_clock_mode"
 
   # Statusline settings
   local datetime="$(get_or_default "@gruvbox-datetime-format" "$DEFAULT_DATETIME_FORMAT")"

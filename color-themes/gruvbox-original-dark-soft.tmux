@@ -47,7 +47,8 @@ faded_orange=#af3a03
 ## Start of tmux-gruvbox-theme
 thm_fg=$light0_soft
 thm_bg=$dark0_soft
-thm_block_bg=$dark2
+thm_bg_as_fg=$dark0_soft
+thm_block_bg=$dark1
 
 # Command (Prefix + :) line and text
 thm_msg_bg=$thm_bg

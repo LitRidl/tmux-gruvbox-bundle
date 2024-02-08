@@ -46,8 +46,9 @@ faded_orange=#af3a03
 
 ## Start of tmux-gruvbox-theme
 thm_fg=$dark0
-thm_bg=$light0_sort
-thm_block_bg=$light3
+thm_bg=$light0
+thm_bg_as_fg=$light0
+thm_block_bg=$light1
 
 # Command (Prefix + :) line and text
 thm_msg_bg=$thm_bg
@@ -55,7 +56,7 @@ thm_msg_fg=$neutral_aqua
 # Command (Prefix + :) line and text when in vi command mode (enabled by "set -g status-keys vi")
 # Prefix + : to open command prompt and then ESC to open command prompt command mode
 thm_msg_cmd_bg=$thm_bg
-thm_msg_cmd_fg=$neutral_yellow
+thm_msg_cmd_fg=$bright_yellow
 
 # Command (Prefix + :) completion menu + Copy mode top-right message like "(105 results) [234/234]"
 thm_cmd_bg=$neutral_aqua
@@ -66,7 +67,7 @@ thm_tab_bg=$thm_block_bg
 thm_tab_fg=$neutral_aqua
 thm_tab_active_bg=$neutral_aqua
 thm_tab_active_fg=$thm_bg
-thm_tab_bell_bg=$neutral_red
+thm_tab_bell_bg=$bright_red
 thm_tab_bell_fg=$thm_bg
 thm_tab_activity_bg=$thm_tab_bell_bg
 thm_tab_activity_fg=$thm_tab_bell_fg
@@ -89,7 +90,7 @@ thm_pane_border=$thm_bg
 
 # Pane number displayed on Prefix + q
 thm_display_pane_active=$thm_active_pane_border
-thm_display_pane=$neutral_orange
+thm_display_pane=$bright_orange
 
 # Popup background and text. It's better to avoid changing these colors so that they match win/pane style
 thm_popup_bg=$thm_bg

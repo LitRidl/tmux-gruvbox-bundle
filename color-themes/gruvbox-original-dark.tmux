@@ -44,76 +44,63 @@ faded_aqua=#427b58
 faded_orange=#af3a03
 
 
-## Gruvbox-original-dark
-base_fg=$light1
-base_bg=$dark0
-base1_fg=$light2
-base1_bg=$dark1
-base2_fg=$light3
-base2_bg=$dark2
-base_bright=$bright_orange
-base_neutral=$neutral_aqua
-base_faded=$faded_yellow
-
 ## Start of tmux-gruvbox-theme
-thm_fg=$base_fg
-thm_bg=$base_bg
-thm_block_bg=$base1_bg
-
-# This color is either set by user with "set -g @gruvbox-explicit-background-color '#user_color'" or set to $thm_bg
-# thm_bg_as_fg=$thm_bg
+thm_fg=$light0
+thm_bg=$dark0
+thm_bg_as_fg=$dark0
+thm_block_bg=$dark1
 
 # Command (Prefix + :) line and text
 thm_msg_bg=$thm_bg
-thm_msg_fg=$base_neutral
+thm_msg_fg=$neutral_aqua
 # Command (Prefix + :) line and text when in vi command mode (enabled by "set -g status-keys vi")
 # Prefix + : to open command prompt and then ESC to open command prompt command mode
 thm_msg_cmd_bg=$thm_bg
-thm_msg_cmd_fg=$base_bright
+thm_msg_cmd_fg=$bright_yellow
 
 # Command (Prefix + :) completion menu + Copy mode top-right message like "(105 results) [234/234]"
-thm_cmd_bg=$base_neutral
+thm_cmd_bg=$neutral_aqua
 thm_cmd_fg=$thm_block_bg
 
 # Window tabs (inactive/active)
 thm_tab_bg=$thm_block_bg
-thm_tab_fg=$base_neutral
-thm_tab_active_bg=$base_neutral
+thm_tab_fg=$neutral_aqua
+thm_tab_active_bg=$neutral_aqua
 thm_tab_active_fg=$thm_bg
-thm_tab_bell_bg=$base_bright
+thm_tab_bell_bg=$bright_red
 thm_tab_bell_fg=$thm_bg
 thm_tab_activity_bg=$thm_tab_bell_bg
 thm_tab_activity_fg=$thm_tab_bell_fg
 
 # Clock
 thm_clock_block_bg=$thm_block_bg
-thm_clock_block_fg=$base_neutral
+thm_clock_block_fg=$neutral_aqua
 
 # Hostname block
-thm_rightmost_block_bg=$base2_bg
+thm_rightmost_block_bg=$bright_blue
 thm_rightmost_block_fg=$thm_bg
 
 # Session name block
-thm_leftmost_block_bg=$base2_bg
+thm_leftmost_block_bg=$bright_blue
 thm_leftmost_block_fg=$thm_bg
 
 # Line between splits
-thm_active_pane_border=$base_neutral
+thm_active_pane_border=$neutral_aqua
 thm_pane_border=$thm_bg
 
 # Pane number displayed on Prefix + q
 thm_display_pane_active=$thm_active_pane_border
-thm_display_pane=$base_faded
+thm_display_pane=$bright_orange
 
 # Popup background and text. It's better to avoid changing these colors so that they match win/pane style
 thm_popup_bg=$thm_bg
 thm_popup_fg=$thm_fg
 
 # Popup borders
-thm_popup_border_fg=$base_neutral
+thm_popup_border_fg=$neutral_aqua
 
 # Clock mode (to activate: tmux clock-mode)
-thm_clock_mode=$base_bright
+thm_clock_mode=$bright_yellow
 
 # copy-mode-match-style
 thm_copy_mode_match_bg=$thm_cmd_bg
@@ -124,7 +111,7 @@ thm_copy_mode_current_match_bg=$thm_copy_mode_match_fg
 thm_copy_mode_current_match_fg=$thm_copy_mode_match_bg
 
 # copy-mode-mark-style
-thm_copy_mode_mark_bg=$base_faded
+thm_copy_mode_mark_bg=$neutral_yellow
 thm_copy_mode_mark_fg=$thm_bg
 
 # vim:filetype=tmux
