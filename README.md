@@ -21,16 +21,17 @@ Gruvbox Tmux Bundle is all about unlocking tmux's full versatility and working w
 
 * A wide selection of Gruvbox variants - Gruvbox Original and Gruvbox Material are available in Dark and Light modes with Soft/Medium/Hard contrast options.
 * A variety of optional status lines (powerline status lines, "pills", boxes, and others).
-* Correct and complete styling of "raw" tmux - both the default status line (activity and bell, zoomed pane, first/last panes, etc) and the full range of tmux UI elements (popup windows, copy mode including matches and marks, `status-keys vi` command prompt command mode, `Prefix + q` pane numbers, etc).
+* Correct and complete styling of "raw" tmux - including the default status line (activity and bell, zoomed pane, first/last panes, etc) and the full range of tmux UI elements (popup windows, copy mode including matches and marks, `status-keys vi` command prompt command mode, `Prefix + q` pane numbers, etc).
 * Support for nearly every tmux styling option.
-* Support of transparency (see [Transparency](#transparency))
+* Support of transparency (see [Transparency](#transparency)).
 * Works well under a wide range of brightness, gamma, and color temperature settings (as set by [redshift](https://github.com/jonls/redshift), [gammastep](https://gitlab.com/chinstrap/gammastep), or [f.lux](https://justgetflux.com/)).
 
 ## Installation
 
-To display the status line icons or utilize Powerline-based themes, please use one of the [Powerline patched fonts](https://github.com/powerline/fonts). Even better, you could use one of the [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts) which already includes Powerline Symbols, Devicons, Font Awesome, among others. In many terminal emulators like [Kitty](https://sw.kovidgoyal.net/kitty/faq/#kitty-is-not-able-to-use-my-favorite-font), [Foot](https://codeberg.org/dnkl/foot#fonts), and [WezTerm](https://wezfurlong.org/wezterm/config/lua/wezterm/nerdfonts.html) it is possible to eliminate the need for patched fonts by using a symbols-only variant of font as a "fallback font".
+To display the status line icons or utilize Powerline-based themes, use one of the [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts) which already includes Powerline Symbols, Devicons, and Font Awesome, among others. If you want only Powerline icons and nothing extra, you may use one of the [Powerline patched fonts](https://github.com/powerline/fonts). 
+The preferred way available in many terminal emulators like [Kitty](https://sw.kovidgoyal.net/kitty/faq/#kitty-is-not-able-to-use-my-favorite-font), [Foot](https://codeberg.org/dnkl/foot#fonts), and [WezTerm](https://wezfurlong.org/wezterm/config/lua/wezterm/nerdfonts.html), is to avoid using patched fonts and just install a symbols-only [Symbols Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/NerdFontsSymbolsOnly.zip) as a "fallback font". This way you can use any font you like, including non-monospace, without patching it or relying on a small set of pre-patched fonts.
 
-If you don't want to install patched or fallback fonts, there is an option to use status line themes that don't rely on them. Alternatively, you can use the default tmux status line by setting `set -g @gruvbox-statusline-theme "none"` in your tmux configuration file.
+If you don't want to install patched or fallback fonts, there is an option to use status line theme that don't rely on them. Alternatively, you can use the default tmux status line by setting `set -g @gruvbox-statusline-theme "none"` in your tmux configuration file.
 
 ### TPM
 
@@ -73,6 +74,7 @@ set -g @gruvbox-statusline-theme 'powerline-minimal' # or 'none', 'powerline-ico
 
 - Setting date and time format (the default is `'%x  %R'`):
 ```bash
+# Note that angled bracket here is a Powerline symbol
 set -g @gruvbox-datetime-format '%a, %b %d  %I:%M %p' # Any custom format or '' to suppress
 ```
 
@@ -87,13 +89,19 @@ Set the terminal's background color to precisely match the background color of t
 If you don't have a desired Gruvbox variant for your terminal emulator, we have a [collection of pre-tested themes](https://github.com/litridl/tmux-gruvbox-bundle/tree/main/TERMINALS.md).
 Each theme has the same file name as Tmux Gruvbox Bundle theme that it is compatible with. Each Tmux Gruvbox Bundle color theme has a color scheme for Alacritty, Kitty, Foot, and WezTerm.
 
-#### 2. Implicit equivalence of colors via `terminal` color
+#### 2. Implicit equivalence of colors via `terminal` color (may require some tinkering)
+This option is useful if you have non-gruvbox terminal theme but you're fine with one of `gruvbox-original-dark` variants or `gruvbox-original-light`. For example, I sometimes use `gruvbox-original-dark-hard` with Tokyo Night Kitty theme, but I still want status bar to have Tokyo Night background color.
+
 Enable the `@gruvbox-transparent-background` option by setting it to `'on'` (it's `'off'` by default). This allows the theme to use a special tmux color known as `"terminal"`:
 ```bash
 set -g @gruvbox-transparent-background 'on' # or off
+# Color to be used when you want to render text using background color, i.e. bg/fg reversal, "background as foreground color". See the note below
+set -g @gruvbox-explicit-background-color '#1d2021'
 ```
 
-**Note:** Using the `"terminal"` special color ensures guarantees that tmux doesn't apply color styling to the text. The text gets rendered using terminal's text and background colors. Instead, the text is rendered using the terminal's text and background colors. In Powerline-based status lines, the character  is used to draw both ends of an arrow, with the background and foreground colors reversed for one of the ends. However, since the `"terminal"` color is used as a foreground color (i.e., light color on a dark background) on one of the ends, its styling will be broken. To fix this, you have to manually specify your terminal's background color using `set -g @gruvbox-explicit-background-color '#some_color'`. This explicit color setting will only be used in background/foreground reversal scenarios.
+**Note:** Using the `"terminal"` special color causes problems if you use "filled" characters like `` and want them to have a background color. As this character is a text, tmux applies foreground `terminal` styling for it, not background. 
+To change this, you have to manually specify your terminal's background color using `set -g @gruvbox-explicit-background-color '#some_color'`. This explicit color setting will only be used in "use background color as a foreground color" reversal scenarios.
+By default, `@gruvbox-explicit-background-color` is set to `terminal` when `@gruvbox-transparent-background` is `on`.
 
 
 ## Alternatives
