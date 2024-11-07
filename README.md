@@ -106,8 +106,8 @@ By default, `@gruvbox-explicit-background-color` is set to `terminal` when `@gru
 
 ## Alternatives
 
-### [egel/tmux-gruvbox](https://github.com/egel/tmux-gruvbox) [Unmaintained for 2+ years]
-A partial implementation of Gruvbox Original Dark and Light color schemes. It comes with colors hard-coded into a predefined status bar and doesn't style many tmux UI elements. Although, it is lightweight and works like in the screenshot out-of-the-box - I used it myself before Tmux Gruvbox Bundle.
+### [egel/tmux-gruvbox](https://github.com/egel/tmux-gruvbox) [Was unmaintained, but currently is the best alternative]
+An implementation of Gruvbox Original Dark and Light color schemes. It comes with colors hard-coded into a predefined status bar and doesn't style many tmux UI elements. Although, it is lightweight and works like in the screenshot out-of-the-box - I used it myself before Tmux Gruvbox Bundle.
 
 ### [thoreinstein/gruvbox-tmux](https://github.com/thoreinstein/gruvbox-tmux) [Unmaintained for 2+ years]
 A [dracula/tmux](https://github.com/dracula/tmux) fork patched to use Gruvbox Original Dark color theme. Comes with its own predefined status bar. For me, it didn't work and style like in the screenshot out-of-the-box. Although, as it is a Dracula fork, it comes a set of pre-made status line widgets, including weather and CPU usage indicator.
